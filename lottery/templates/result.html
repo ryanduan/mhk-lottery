@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中奖人员名单</title>
+</head>
+<body>
+<div align="center"><span style="font-size: 50px">中奖人员名单</span></div>
+<div style="padding-top: 50px;">
+    <table border="1" align="center" width=80%>
+        <tr>
+            <th rowspan="5" scope="row"><h1 align="center" style="color: red">五等奖</h1></th>
+
+            {% if rst_5_1 %}
+                {% for obj_5_1 in rst_5_1 %}
+                    <td><span style="font-size: 25px">{{ obj_5_1.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+
+            {% if rst_5_2 %}
+                {% for obj_5_2 in rst_5_2 %}
+                    <td><span style="font-size: 25px">{{ obj_5_2.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+
+            {% if rst_5_3 %}
+                {% for obj_5_3 in rst_5_3 %}
+                    <td><span style="font-size: 25px">{{ obj_5_3.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+
+            {% if rst_5_4 %}
+                {% for obj_5_4 in rst_5_4 %}
+                    <td><span style="font-size: 25px">{{ obj_5_4.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+
+            {% if rst_5_5 %}
+                {% for obj_5_5 in rst_5_5 %}
+                    <td><span style="font-size: 25px">{{ obj_5_5.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th rowspan="5" scope="row"><h1 align="center" style="color: red">四等奖</h1></th>
+            {% if rst_4_1 %}
+                {% for obj_4_1 in rst_4_1 %}
+                    <td><span style="font-size: 25px">{{ obj_4_1.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_4_2 %}
+                {% for obj_4_2 in rst_4_2 %}
+                    <td><span style="font-size: 25px">{{ obj_4_2.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_4_3 %}
+                {% for obj_4_3 in rst_4_3 %}
+                    <td><span style="font-size: 25px">{{ obj_4_3.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_4_4 %}
+                {% for obj_4_4 in rst_4_4 %}
+                    <td><span style="font-size: 25px">{{ obj_4_4.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_4_5 %}
+                {% for obj_4_5 in rst_4_5 %}
+                    <td><span style="font-size: 25px">{{ obj_4_5.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th rowspan="4" scope="row"><h1 align="center" style="color: red">三等奖</h1></th>
+            {% if rst_3_1 %}
+                {% for obj_3_1 in rst_3_1 %}
+                    <td><span style="font-size: 25px">{{ obj_3_1.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_3_2 %}
+                {% for obj_3_2 in rst_3_2 %}
+                    <td><span style="font-size: 25px">{{ obj_3_2.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_3_3 %}
+                {% for obj_3_3 in rst_3_3 %}
+                    <td><span style="font-size: 25px">{{ obj_3_3.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    <tr>
+            {% if rst_3_4 %}
+                {% for obj_3_4 in rst_3_4 %}
+                    <td><span style="font-size: 25px">{{ obj_3_4.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th scope="row"><h1 align="center" style="color: red">二等奖</h1></th>
+            {% if rst_2 %}
+                {% for obj_2 in rst_2 %}
+                    <td><span style="font-size: 25px">{{ obj_2.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th scope="row"><h1 align="center" style="color: red">一等奖</h1></th>
+            {% if rst_1 %}
+                {% for obj_1 in rst_1 %}
+                    <td><span style="font-size: 25px">{{ obj_1.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th scope="row"><h1 align="center" style="color: red">特等奖</h1></th>
+            {% if rst_t %}
+                {% for obj_t in rst_t %}
+                    <td><span style="font-size: 25px">{{ obj_t.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            <th scope="row"><h1 align="center" style="color: red">加奖</h1></th>
+            {% if rst_j %}
+                {% for obj_j in rst_j %}
+                    <td><span style="font-size: 25px">{{ obj_j.name }}</span></td>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>XMKT 2017年会抽奖</title>
+    {% block statics %}
+        {% load staticfiles %}
+        <!--必要样式-->
+
+        <link href="/static/menu/css/component.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/static/js/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="/static/menu/js/modernizr.custom.js"></script>
+        <script type="text/javascript" src="/static/layer/layer.js"></script>
+        <link rel="stylesheet" href="/static/layui/css/layui.css">
+        <script type="text/javascript" src="/static/menu/js/jquery.dlmenu.js"></script>
+        <script type="text/javascript" src="/static/js/easing.js"></script>
+
+    {% endblock %}
+
+</head>
+<body onkeydown="xKeyEvent(event)">
+
+<header>
+
+    <div id="dl-menu" class="dl-menuwrapper">
+        <button id="dl-menu-button">Open Menu</button>
+        <ul class="dl-menu">
+            <li><a href="/">首页</a></li>
+            {#            <li><a href="/lot5_10/">五等奖抽奖10</a></li>#}
+            <li><a href="/lot5/">五等奖抽奖5</a></li>
+            <li><a href="/lot4/">四等奖抽奖</a></li>
+            <li><a href="/lot3/">三等奖抽奖</a></li>
+            <li><a href="/lot2_t/">二等奖(号码)</a></li>
+            <li><a href="/lot1_t/">一等奖(号码)</a></li>
+            <li><a href="/lott_t/">特等奖(号码)</a></li>
+
+            <li>
+                <a href="Line">其他</a>
+                <ul class="dl-submenu">
+                    <li class="dl-back"><a href="#">返回上一级</a></li>
+                    <li><a href="/lote_1/">额外增加奖项(一个)</a></li>
+                    <li><a href="/lote_5/">额外增加奖项(五个)</a></li>
+                    <li><a href="/lote_t/">额外加奖(一个号码)</a></li>
+
+
+                    {#                    <li><a href="/lotj2/">额外增加奖项(抽名字)</a></li>#}
+                    {#                    <li><a href="/lotj1/">额外增加奖项(抽电话)</a></li>#}
+                    <form id="delmodelform" action="/initialize/" method="post" onsubmit="return comf()">
+
+
+                    </form>
+                    <li><a id="asset" href="#" onclick="clear1()" class="start" style="color: black">初始化人员信息</a></li>
+
+                    <li><a href="#" onclick="del1()" class="start" style="color: black">继续抽奖</a></li>
+
+                    <form id="delres" action="/dellottyers/" method="post" onsubmit="return comf()">
+
+                    </form>
+                    <li><a href="/result/" target="_blank">中奖人员名单</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#formbackground').height($(window).height());
+        $('#formbackground').width($(window).width());
+    });
+
+    $(function () {
+        $('#dl-menu').dlmenu();
+    });
+
+
+    function clear1() {
+        if (confirm("确定要重置抽奖名单吗？中奖人员可重复！")) {
+            submitForm()
+        }
+    }
+    function del1() {
+        if (confirm("确定继续抽奖？中奖人员不重复")) {
+            submitForm1()
+        }
+    }
+    function submitForm() {
+
+        document.getElementById("delmodelform").submit();
+
+    }
+
+    function submitForm1() {
+
+        document.getElementById("delres").submit();
+
+    }
+
+</script>
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

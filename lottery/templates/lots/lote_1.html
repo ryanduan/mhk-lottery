@@ -1,0 +1,144 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" language="javascript">
+        function xKeyEvent(e) {   //通用的兼容各个浏览器的响应键盘事件函数
+//FUNCTION: do the EVENT of KEY
+            var e = e || window.event;  //事件处理
+            switch (e.keyCode | e.which | e.charCode)  //按键 ASCII 码值
+            {
+                case 66: //下方向键
+                {
+
+
+                    $.get('/choe_1/', function (data) {
+
+                        beginRndNum(this)
+
+                    });
+
+                    //...x operation...
+                    break;
+
+                }
+                default:
+                //...default operation...
+            }
+        }
+    </script>
+    <div id="formbackground" style="position:absolute; z-index:-1;"><img src="/static/images/bj.jpeg" height="100%"
+                                                                         width="100%"/></div>
+    <div style="font-size: 80px;padding-top: 80px"></div>
+    <div style="float:left;font-size: 140px;padding-top: 170px;padding-left: 100px"><span><a style="padding-left:180px">加</a><br><a
+            style="padding-left: 180px"></a><br><a style="padding-left: 180px">奖</a></span>
+    </div>
+
+    <div id="xianshi" class="con" style="width: 35%;height:80%;margin:0 auto"
+         align="center">
+
+        <table style="width: 100%;
+        height: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        padding: 2px;">
+            <tr>
+                <td>
+                    <span id="ResultNum" style="color:transparent"></span>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var g_Interval = 1;
+        var g_PersonCount = 99999999999;//参加抽奖人数
+        var g_Timer;
+        var running = false;
+        var userAll = {{ userlist|safe }};
+
+        var num = userAll.length - 1;
+        var oBtn = document.getElementById('btn');
+        var canck = true;
+
+        function beginRndNum(trigger) {
+            {#            alert("ok")#}
+            if (!canck)return;
+            if (running) {
+                running = false;
+                $(trigger).val("开始");
+                $.get("/updatee_1/", function (data) {
+                    var cnum = data[data.length - 1]["toolnum"];
+
+
+
+                    $('#ResultNum').html(data[0]["name"]);
+
+                    clearTimeout(g_Timer);
+
+
+                    canck = false;
+                    setTimeout(function () {
+                        canck = true;
+                    }, 3000);
+
+                });
+
+            }
+            else {
+                running = true;
+
+                $('#ResultNum').css('color', 'black');
+
+
+
+                $(trigger).val("停止");
+                $.get('/choe_1/', function (data) {
+
+
+                        beginTimer()
+
+
+
+
+                });
+
+            }
+
+        }
+
+        function updateRndNum() {
+
+
+            var randomVal = Math.round(Math.random() * num);
+            var randomVal1 = Math.round(Math.random() * num);
+            var randomVal2 = Math.round(Math.random() * num);
+            var randomVal3 = Math.round(Math.random() * num);
+            var randomVal4 = Math.round(Math.random() * num);
+            currentPerson = userAll[randomVal];
+            currentPerson1 = userAll[randomVal1];
+            currentPerson2 = userAll[randomVal2];
+            currentPerson3 = userAll[randomVal3];
+            currentPerson4 = userAll[randomVal4];
+
+            $('#ResultNum').html(currentPerson.name);
+
+        }
+
+
+        function beginTimer() {
+            document.getElementById("xianshi").style.display = "";
+            g_Timer = setTimeout(beat(), g_Interval);
+        }
+
+
+        function beat() {
+            g_Timer = setTimeout(beat, g_Interval);
+            updateRndNum();
+        }
+
+    </script>
+{% endblock %}

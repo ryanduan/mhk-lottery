@@ -1,0 +1,213 @@
+html,body{text-align:center;padding-top:0;width: 100%;height: 100%;overflow:hidden; margin:0; }
+
+.wai{
+	position: relative;
+	margin:0 auto;
+
+	width:30%;
+	overflow:hidden;
+	z-index:1;
+	padding-top: 100px}
+.bg{
+	opacity: 0.25;-moz-opacity: 0.25;filter:alpha(opacity=25);
+	background:#ECF5FF;
+	position:absolute;
+	width:100%;
+	height: 100%;
+	z-index:2;
+	}
+.con{
+	color:black;
+	font-weight:bold;
+	position:relative;
+	z-index:3;
+	padding:0 10px;
+	}
+@media screen and (max-device-width: 1920px){
+.con span{
+	font-size: 90px;
+}
+.num_box{
+	top: 200px;
+	margin-left: 200px;
+
+}
+.num{
+width: 135px;
+}
+}
+@media screen and (max-device-width: 1600px){
+.con span{
+	font-size: 80px;
+}
+.num_box{
+	top: 200px;
+}
+.num{
+width: 110px;
+}
+.main{
+	width: 1600px;
+}
+}
+@media screen and (max-device-width: 1366px){
+.con span{
+	font-size: 70px;
+}
+.num_box{
+	top: 200px;
+margin-left: 0;
+}
+.num{
+width: 100px;
+}
+.main{
+	width: 1120px;
+}
+}
+
+@media screen and (max-device-width: 1360px){
+.con span{
+	font-size: 70px;
+}
+
+}
+.num_box{
+	top: 100px;
+margin-left: 0;
+}
+.num{
+width: 100px;
+}
+.main{
+	width: 1120px;
+}
+.wai{
+	padding-top: 10px;
+}
+
+
+
+
+@media screen and (max-device-width: 1280px){
+.con span{
+	font-size: 60px;
+}
+.num_box{
+	top: 200px;
+}
+.num{
+width: 80px;
+}
+.main{
+	width: 900px;
+}
+}
+
+@media screen and (max-device-width: 1024px){
+.con span{
+	font-size: 55px;
+}
+.num_box{
+top: 200px;
+margin-left: 0;
+
+}
+.num{
+width: 80px;
+}
+.main{
+	width: 900px;
+}
+}
+
+@media screen and (max-device-width: 800px){
+.con span{
+	font-size: 40px;
+}
+.num_box{
+top: 50px;
+margin-left: 0;
+
+}
+.num{
+width: 70px;
+}
+.main{
+	width: 790px;
+}
+.wai{
+	padding-top: 50px;
+}
+}
+
+
+@font-face {
+font-family:微软简标宋;
+src: url('/static/font/微软简标宋.ttf');
+}
+
+#Result{border:1px solid #40AA53;margin:0 auto;text-align:center;width:800px;height: 25%;padding:10px 0;background:#efe;}
+#Result1{border:1px solid #40AA53;margin:0 auto;text-align:center;width:800px;height: 25%;padding:10px 0;background:#efe;}
+#Result2{border:1px solid #40AA53;margin:0 auto;text-align:center;width:800px;height: 25%;padding:10px 0;background:#efe;}
+#Result3{border:1px solid #40AA53;margin:0 auto;text-align:center;width:800px;height: 25%;padding:10px 0;background:#efe;}
+#Result4{border:1px solid #40AA53;margin:0 auto;text-align:center;width:800px;height: 25%;padding:10px 0;background:#efe;}
+
+
+#ResultNum{font-family:微软简标宋}
+#ResultNum1{font-family:微软简标宋}
+#ResultNum2{font-family:微软简标宋}
+#ResultNum3{font-family:微软简标宋}
+#ResultNum4{font-family:微软简标宋}
+#Button{margin:50px 0 0 0;}
+#Button input{font-size:40px;padding:0 50px;}
+#btn1{background-color:#40AA53;border:1px solid #40AA53;width:20%;height:55px;margin:0em auto;font-size:1em;border-radius:2.5px;-moz-border-radius:2.5px;-webkit-border-radius:2.5px;color:#FFF;}
+.btn a{ display:block;font-weight: bold; font-size: 28px;  width:320px; height:50px; margin:30px auto; text-align:center; line-height:50px; text-decoration:none; color:#fff; -moz-border-radius:25px; -webkit-border-radius:25px; border-radius:25px;}
+.btn a.start{ background:#80b600; }
+.btn a.start:hover{ background:#75a700;}
+.btn a.stop{ background:#00a2ff;}
+.btn a.stop:hover{ background:#008bdb;}
+.btn a.stop{ display: none}
+.main_bg{
+
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-color: #FFF;
+}
+.main{
+
+	height: 100%;
+	position: relative;
+	margin: 0 auto;
+}
+
+.num_box{
+	height: 647px;
+
+	position: absolute;
+	/*
+	left: 369px;
+	top: 300px;
+	margin-left: -370px;
+	*/
+	z-index: 8;
+	overflow: hidden;
+	text-align: center;
+}
+.num{
+	background: url(/static/images/num.png) top center repeat-y;
+
+	height: 250px;
+	float: left;
+	margin-right: 0px;
+}
+.num1{
+	background: url(/static/images/num1.png) top center repeat-y;
+	width: 10px;
+	height: 250px;
+	float: left;
+	margin-right: 0px;
+}
+.btn{width:264px;height:89px;position:absolute;left:50%;bottom:50px;margin-left:-132px;cursor:pointer;clear:both;}
+.btn1{background:url(/static/images/btn_start.png) 0px 0px no-repeat;width:264px;height:89px;position:absolute;left:50%;bottom:50px;margin-left:-132px;cursor:pointer;clear:both;}

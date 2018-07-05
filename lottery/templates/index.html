@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>XMKT 2017 抽奖</title>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+
+{% load staticfiles %}
+<style type="text/css">
+* { margin: 0; padding: 0;}
+body { font-family: "Microsoft Yahei"; background-color: #15734b;}
+h1 { width: 900px; margin: 40px auto; font: 32px "Microsoft Yahei"; text-align: center; color: #fff;}
+.dowebok { width: 894px; height: 563px; margin: 0 auto; background-image: url(/static/images/s3_bg.png);}
+.rotary { position: relative; float: left; width: 504px; height: 504px; margin: 20px 0 0 20px;}
+.hand { position: absolute; left: 144px; top: 144px; width: 216px; height: 216px; cursor: pointer;}
+.list { float: right; width: 300px; padding-top: 44px;}
+.list strong { position: relative; left: -45px; display: block; height: 65px; line-height: 65px; font-size: 32px; color: #ffe63c;}
+.list h4 { height: 45px; margin: 20px 0 10px; line-height: 45px; font-size: 24px; color: #fff;}
+.list ul { line-height: 20px; list-style-type: none; font-size: 20px; color: #fff;}
+.list span { display: inline-block; width: 94px;}
+
+.wrap{ width:400px; margin:60px auto; font-family:"微软雅黑";}
+.show{ width:400px; height:250px; background-color:#ff3300; line-height:46px; text-align:center; padding-top:150px;color:#fff; font-size:38px; -moz-border-radius:200px; -webkit-border-radius:200px; border-radius:200px; background-image: -webkit-gradient(linear,0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5,#fb6c00)); -moz-box-shadow:2px 2px 10px #BBBBBB; -webkit-box-shadow:2px 2px 10px #BBBBBB; box-shadow:2px 2px 10px #BBBBBB;}
+.btn a{ display:block;font-weight: bold; font-size: 28px;  width:320px; height:50px; margin:30px auto; text-align:center; line-height:50px; text-decoration:none; color:#fff; -moz-border-radius:25px; -webkit-border-radius:25px; border-radius:25px;}
+.btn a.start{ background:#80b600; }
+.btn a.start:hover{ background:#75a700;}
+.btn a.stop{ background:#00a2ff;}
+.btn a.stop:hover{ background:#008bdb;}
+#syr,#zjr{color:red}
+@media screen and (max-device-width: 800px){
+.btn a{ display:block;font-weight: bold; font-size: 18px;  width:320px; height:30px; margin:10px auto; text-align:center; line-height:30px; text-decoration:none; color:#fff; -moz-border-radius:25px; -webkit-border-radius:25px; border-radius:25px;}
+
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>XMKT体验营销2017年会抽奖</h1>
+
+<div  style="text-align: center">
+	<div class="btn">
+			<a href="/lot1_t/" class="start">一等奖抽奖(号码)</a>
+	</div>
+
+
+    <div class="btn" >
+			<a href="/lot2_t/" class="start">二等奖抽奖(号码)</a>
+	</div>
+    <div class="btn">
+			<a href="/lot3/" class="start">三等奖抽奖</a>
+	</div>
+    <div class="btn">
+			<a href="/lot4/" class="start">四等奖抽奖</a>
+
+	</div>
+
+    <div class="btn">
+
+                <a href="/lot5/" class="start">五等奖5个一轮抽奖</a>
+        <a href="/lot5_10/" class="start">五等奖10个一轮抽奖</a>
+        </div>
+    <div class="btn">
+                <a href="/lott_t/" class="start">特等奖抽奖(号码)</a>
+        </div>
+    <div class="btn">
+                <a href="/lote_5/" class="start">加奖(五个一轮)</a>
+        </div>
+    <div class="btn">
+                <a href="/lote_1/" class="start">加奖(一个一轮)</a>
+        </div>
+<div class="btn">
+                <a href="{% url 'upname-view' %}" class="start">导入员工数据</a>
+        </div>
+<form id="delmodelform" action="/initialize/" method="post" onsubmit="return comf()">
+    <div class="btn">
+                <a id="asset" href="#" onclick="clear1()" class="start">初始化员工信息</a>
+        </div>
+</form>
+</div>
+
+
+
+<script>
+
+
+function clear1()
+{
+ if(confirm("确定要重置抽奖名单吗？重置后无法恢复！"))
+ {
+ submitForm()
+ }
+}
+
+  function submitForm() {
+
+                document.getElementById("delmodelform").submit();
+
+     }
+
+
+</script>
+</body>
+</html>

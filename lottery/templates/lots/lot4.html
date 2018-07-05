@@ -1,0 +1,222 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" language="javascript">
+        function xKeyEvent(e) {   //通用的兼容各个浏览器的响应键盘事件函数
+//FUNCTION: do the EVENT of KEY
+            var e = e || window.event;  //事件处理
+            switch (e.keyCode | e.which | e.charCode)  //按键 ASCII 码值
+            {
+                case 66: //下方向键
+                {
+
+
+                    $.get('/cho4', function (data) {
+                        if (data < 14) {
+                            beginRndNum(this)
+                        }
+                        else {
+                            $('#overdown').html("四等奖已经全部产生");
+
+                        }
+                    });
+
+                    //...x operation...
+                    break;
+
+                }
+                default:
+                //...default operation...
+            }
+        }
+    </script>
+    <div id="formbackground" style="position:absolute; z-index:-1;"><img src="/static/images/bj.jpeg" height="100%"
+                                                                         width="100%"/></div>
+    <div style="font-size: 80px;padding-top: 80px"></div>
+    <div style="float:left;font-size: 140px;padding-top: 170px;padding-left: 100px"><span><a style="padding-left:180px">四</a><br><a
+            style="padding-left: 180px">等</a><br><a style="padding-left: 180px">奖</a></span>
+    </div>
+
+    <div id="xianshi" class="con" style="width: 35%;height:80%;margin:0 auto"
+         align="center">
+
+        <table style="width: 100%;
+        height: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        padding: 2px;">
+            <tr>
+                <td>
+                    <span id="ResultNum" style="color:transparent"></span>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript">
+        var g_Interval = 1;
+        var g_PersonCount = 99999999999;//参加抽奖人数
+        var g_Timer;
+        var running = false;
+        var userAll = {{ userlist|safe }};
+
+        var num = userAll.length - 1;
+        var oBtn = document.getElementById('btn');
+        var canck = true;
+
+        function beginRndNum(trigger) {
+            if (!canck)return;
+            if (running) {
+                running = false;
+                $(trigger).val("开始");
+                $.get("/update4", function (data) {
+                    var cnum = data[data.length - 1]["toolnum"];
+                    //alert(cnum);
+                    if (cnum < 15) {
+                        if (cnum == 14) {
+                            $('#ResultNum').html(data[0]["name"] + "<br>" + data[1]["name"]);
+                            {#                            $('#ResultNum').html(".");#}
+                            {#                            $('#ResultNum1').html(data[0]["name"]);#}
+                            {#                            $('#ResultNum2').html(data[1]["name"]);#}
+                            {#                            $('#ResultNum3').html(".");#}
+                            {#                            $('#ResultNum4').html(".");#}
+
+                            clearTimeout(g_Timer);
+
+
+                        }
+                        else if (cnum < 14) {
+
+                            $('#ResultNum').html(data[0]["name"] + "<br>" + data[1]["name"]+ "<br>" + data[2]["name"]);
+
+                            {#                            document.getElementById("xianshi").style.width = "50%";#}
+
+
+                            {#                            $('#ResultNum').html(".");#}
+                            {#                            $('#ResultNum1').html(data[0]["name"]);#}
+                            {#                            $('#ResultNum2').html(data[1]["name"]);#}
+                            {#                            $('#ResultNum3').html(data[2]["name"]);#}
+                            {#                            $('#ResultNum4').html(".");#}
+
+
+                            clearTimeout(g_Timer);
+                        }
+
+                        else {
+                            $('#ResultNum').html(data[0]["name"] + "<br>" + data[1]["name"]+ "<br>" + data[2]["name"]);
+
+                            clearTimeout(g_Timer);
+                            $('#overdown').html("四等奖已经全部产生");
+                            oBtn.value = 'OVER';
+                            oBtn.disabled = true;
+
+                        }
+                    }
+                    else {
+                        $('#overdown').html("四等奖已经全部产生");
+                        oBtn.value = 'OVER';
+                        oBtn.disabled = true;
+                    }
+                    canck = false;
+                    setTimeout(function () {
+                        canck = true;
+                    }, 5000);
+
+                });
+
+            }
+            else {
+                running = true;
+                $('#ResultNum').css('color', 'black');
+
+                $(trigger).val("停止");
+                $.get('/cho4', function (data) {
+                    if (data < 13) {
+                        if (data ==12) {
+
+                            beginTimer()
+                        }
+
+                        else {
+
+                            beginTimer1()
+                        }
+                    }
+
+
+                });
+
+            }
+
+        }
+
+        function updateRndNum() {
+            //alert(data);
+
+            var randomVal = Math.round(Math.random() * num);
+            var randomVal1 = Math.round(Math.random() * num);
+            var randomVal2 = Math.round(Math.random() * num);
+            var randomVal3 = Math.round(Math.random() * num);
+            var randomVal4 = Math.round(Math.random() * num);
+            currentPerson = userAll[randomVal];
+            currentPerson1 = userAll[randomVal1];
+            currentPerson2 = userAll[randomVal2];
+            currentPerson3 = userAll[randomVal3];
+            currentPerson4 = userAll[randomVal4];
+
+            $('#ResultNum').html(currentPerson.name + "<br>" + currentPerson1.name)
+            {#            $('#ResultNum').html(currentPerson1.name);#}
+
+
+        }
+
+
+        function updateRndNum1() {
+
+            var randomVal = Math.round(Math.random() * num);
+            var randomVal1 = Math.round(Math.random() * num);
+            var randomVal2 = Math.round(Math.random() * num);
+            var randomVal3 = Math.round(Math.random() * num);
+            var randomVal4 = Math.round(Math.random() * num);
+            currentPerson = userAll[randomVal];
+            currentPerson1 = userAll[randomVal1];
+            currentPerson2 = userAll[randomVal2];
+            currentPerson3 = userAll[randomVal3];
+            currentPerson4 = userAll[randomVal4];
+
+
+            $('#ResultNum').html(currentPerson.name + "<br>" + currentPerson1.name + "<br>"+currentPerson2.name)
+
+        }
+
+
+        function beginTimer() {
+            document.getElementById("xianshi").style.display = "";
+            g_Timer = setTimeout(beat(), g_Interval);
+        }
+        function beginTimer1() {
+            document.getElementById("xianshi").style.display = "";
+            g_Timer = setTimeout(beat1(), g_Interval);
+        }
+
+
+        function beat() {
+            g_Timer = setTimeout(beat, g_Interval);
+            updateRndNum();
+        }
+        function beat1() {
+            g_Timer = setTimeout(beat1, g_Interval);
+            updateRndNum1();
+        }
+
+
+    </script>
+{% endblock %}

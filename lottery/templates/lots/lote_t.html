@@ -1,0 +1,171 @@
+{% extends "./base.html" %}
+
+{% block content %}
+    <script type="text/javascript" language="javascript">
+        function xKeyEvent(e) {   //通用的兼容各个浏览器的响应键盘事件函数
+//FUNCTION: do the EVENT of KEY
+            var e = e || window.event;  //事件处理
+            switch (e.keyCode | e.which | e.charCode)  //按键 ASCII 码值
+            {
+                case 66: //下方向键
+                {
+
+
+                    $.get('/choe_t/', function (data) {
+
+                            beginRndNum()
+
+                    });
+
+                    //...x operation...
+                    break;
+
+                }
+                default:
+                //...default operation...
+            }
+        }
+    </script>
+    <div id="formbackground" style="position:absolute; z-index:-1;"><img src="/static/images/bj.jpeg" height="100%"
+                                                                         width="100%"/></div>
+
+    <div style="float: left;padding-top: 180px;padding-left: 120px">
+
+        <div class="con" style="font-size: 80px;padding-top: 50px"><span style="font-size: 180px">加 奖</span></div>
+
+        <div class="main_bg">
+            <div class="main">
+                <div class="num_box">
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div id="num1" class="num1"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div id="num1" class="num1"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+                    <div class="num"></div>
+
+                    {% if toolot %}
+
+                        <div id="Button" style="width:100%;position:fixed;bottom: 15px;left:0;visibility:hidden">
+                            <input type='button' id="btn" value='开始' onclick='beginRndNum()'/>
+                        </div>
+
+                    {% else %}
+                        <div id="Button" style="width:100%;position:fixed;bottom: 15px;left:0;visibility:hidden">
+                            <input type='button' id="btn" value='加奖已经全部产生' disabled=True/>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function numRand() {
+            var x = 99999999999; //上限
+            var y = 10000000000; //下限
+            var rand = parseInt(Math.random() * (x - y + 1) + y);
+            return rand;
+        }
+        var isBegin = false;
+        var canck = true;
+
+        function beginRndNum() {
+            if (!canck)return;
+            var u = 265;
+            var btn = $("#btn");
+            var open = false;
+            var oBtn = document.getElementById('btn');
+
+            if (!open) {
+
+                btn.removeClass('start').addClass('stop').text('等待抽奖完成');
+                oBtn.value = '等待抽奖完成';
+                oBtn.disabled = true;
+                isBegin = true;
+                $.get("/updatee_t/", function (data) {
+                    var cnum = data[data.length - 1]["toolnum"];
+                    if (cnum) {
+
+
+                        $(".num").css('backgroundPositionY', 0);
+                        var result = data[0]["tel"];
+
+                        var num_arr = (result + '').split('');
+                        $(".num").each(function (index) {
+                            var _num = $(this);
+                            setTimeout(function () {
+                                _num.animate({
+                                    backgroundPositionY: (u * 60) - (u * num_arr[index])
+                                }, {
+                                    duration: 6000 + index * 1000,
+                                    easing: "easeInOutCirc",
+                                    complete: function () {
+                                        if (index == 3) isBegin = false;
+                                        oBtn.value = '开始';
+                                        oBtn.disabled = false;
+
+
+                                    }
+
+                                });
+                            }, index * 2);
+
+                        });
+                    }
+                    else {
+                        $(".num").css('backgroundPositionY', 0);
+                        var result = data[0]["tel"];
+
+                        var num_arr = (result + '').split('');
+                        $(".num").each(function (index) {
+                            var _num = $(this);
+                            setTimeout(function () {
+                                _num.animate({
+                                    backgroundPositionY: (u * 60) - (u * num_arr[index])
+                                }, {
+                                    duration: 6000 + index * 1000,
+                                    easing: "easeInOutCirc",
+                                    complete: function () {
+                                        if (index == 3) isBegin = false;
+                                        $('#overdown').html("一等奖已经全部产生");
+                                        oBtn.value = '一等奖已经全部产生';
+                                        oBtn.disabled = true;
+
+
+                                    }
+
+                                });
+                            }, index * 2);
+
+                        });
+                    }
+                    canck = false;
+                    setTimeout(function () {
+                        canck = true;
+                    }, 30000);
+                });
+                open = true;
+
+
+            }
+            else {
+
+                btn.removeClass('stop').addClass('start').text('开始');
+                open = false;
+            }
+
+
+        }
+    </script>
+
+    <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+
+    </div>
+{% endblock %}
