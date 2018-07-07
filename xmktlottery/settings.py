@@ -82,25 +82,25 @@ WSGI_APPLICATION = 'xmktlottery.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-# DATABASES = {
-#         'default': {
-#                     'ENGINE': 'django.db.backends.sqlite3',
-#                             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#                                 }
-# }
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mhd',
-        'USER': 'root',
-        'PASSWORD': '123',
-        'HOST': '',
-        'PORT': '',
-        # 'OPTIONS': {'charset': 'utf8mb4'},
-    }
+        'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mhd',
+#         'USER': 'root',
+#         'PASSWORD': '123',
+#         'HOST': '',
+#         'PORT': '',
+#         # 'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
 
 
 
