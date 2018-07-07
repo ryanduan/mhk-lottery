@@ -86,5 +86,6 @@ urlpatterns = [
     url(r'^dellottyers/$', 'lottery.views.dellottyers', name='dellottyers-view'),
 
     url(r'^initialize/$', 'lottery.views.initialize', name='initialize'),
+    url(r'^refresh/name/?$', 'lottery.views.refresh_name', name='refresh'),
 
 ]

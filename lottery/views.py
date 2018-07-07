@@ -1254,24 +1254,25 @@ def upname(request):
                 for row_index in range(1, sheet.nrows):
                     record = sheet.row_values(row_index, 0)
                     try:
+                        print(record)
                         name = record[0].strip()
                         # phonenum = str(record[1]).rstrip(".0")
-                        phonenum = int(record[1])
+                        phonenum = str(record[1])
 
                         person = Person(name=name, tel=phonenum)
                         person.save()
                     except Person.DoesNotExist, e:
                         print e
-                successinfo = "上传"
-                success = True
+                # successinfo = "上传"
+                # success = True
                 return HttpResponseRedirect('/')
-                """
-                return render_to_response('upname.html', {
-                    "title": '导入人员名单',
-                    'form': form,
-                    'successinfo': successinfo,
-                    'success': success,
-                    'username': username}, context_instance=RequestContext(request))"""
+                # """
+                # return render_to_response('upname.html', {
+                #     "title": '导入人员名单',
+                #     'form': form,
+                #     'successinfo': successinfo,
+                #     'success': success,
+                #     'username': username}, context_instance=RequestContext(request))"""
             except Exception, e:
                 print e
         else:
@@ -1337,3 +1338,66 @@ def result(request):
                                            'rst_t': rst_t or None,
                                            'rst_j': rst_j or None,
                                            })
+
+
+@login_required
+def refresh_name(req):
+    """"""
+    name_list = [
+        "黄志强",
+        "陈丽虹",
+        "曾瑞安",
+        "王奕元",
+        "吴飞云",
+        "邹燕凡",
+        "潘晓明",
+        "谢世杰",
+        "苏立强",
+        "罗欣文",
+        "石泽浮",
+        "陈志华",
+        "林俊国",
+        "由君龙",
+        "庄艺",
+        "刘伟文",
+        "李添华",
+        "何浩恩",
+        "许方华",
+        "黄俊杰",
+        "杜建铭",
+        "岑耀",
+        "张锦华",
+        "张炳添",
+        "陈道凤",
+        "戚国祥",
+        "邓伟文",
+        "陈雯雅",
+        "庄海展",
+        "邹少波",
+        "陈观",
+        "马奕娜",
+        "陈础雄",
+        "邱国伟",
+        "陈冠行",
+        "林志伟",
+        "杨高政",
+        "关伟萍",
+        "许志文",
+        "钟燕平",
+        "陈文江",
+        "郑仁明",
+        "蔡惠霞",
+        "谢文军",
+        "许培连",
+        "张伟杰",
+        "林建明",
+        "曾铧强",
+        "陈幸跃",
+        "杨永全",
+        "陈立雄"
+    ]
+    for name in name_list:
+        name = name.strip()
+        if name:
+            Person.objects.create(name=name)
+    return HttpResponse('OK')
