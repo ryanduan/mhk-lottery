@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50, verbose_name='\u59d3\u540d')),
-                ('tel', models.BigIntegerField(verbose_name='\u624b\u673a\u53f7\u7801')),
+                ('tel', models.CharField(default=b'', max_length=20, verbose_name='\u624b\u673a\u53f7\u7801')),
                 ('num', models.CharField(default=100, max_length=50, verbose_name='\u5956\u5238\u53f7\u7801')),
                 ('isWin', models.IntegerField(default=0, verbose_name='\u662f\u5426\u4e2d\u5956')),
                 ('mWin', models.IntegerField(default=0)),
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('uid', models.IntegerField()),
                 ('name', models.CharField(max_length=50, verbose_name='\u4e2d\u5956\u4eba\u59d3\u540d')),
-                ('tel', models.CharField(max_length=50, verbose_name='\u4e2d\u5956\u4eba\u7535\u8bdd')),
+                ('tel', models.CharField(default=b'', max_length=50, verbose_name='\u4e2d\u5956\u4eba\u7535\u8bdd')),
                 ('num', models.CharField(default=100, max_length=50, verbose_name='\u5956\u5238\u53f7\u7801')),
                 ('createtime', models.DateTimeField(auto_now_add=True, verbose_name='\u4e2d\u5956\u65f6\u95f4')),
                 ('awardname', models.CharField(max_length=50, verbose_name='\u5956\u9879\u540d\u79f0')),

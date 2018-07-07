@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'xmktlottery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xmkt',
+        'NAME': 'mhd',
         'USER': 'root',
         'PASSWORD': '123',
         'HOST': '',

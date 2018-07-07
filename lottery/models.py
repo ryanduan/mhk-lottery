@@ -13,7 +13,7 @@ from django.db import models
 
 class Person(models.Model):
     name=models.CharField(max_length=50,verbose_name=u'姓名')
-    tel=models.BigIntegerField(verbose_name=u'手机号码')
+    tel=models.CharField(max_length=20, default='', verbose_name=u'手机号码')
     num=models.CharField(max_length=50,default=100,verbose_name=u'奖券号码')
     isWin=models.IntegerField(default=0,verbose_name=u'是否中奖')
     mWin=models.IntegerField(default=0)
@@ -29,7 +29,7 @@ class Person(models.Model):
 class Result(models.Model):
     uid=models.IntegerField()
     name=models.CharField(max_length=50,verbose_name=u'中奖人姓名')
-    tel=models.CharField(max_length=50,verbose_name=u'中奖人电话')
+    tel=models.CharField(max_length=50, default='', verbose_name=u'中奖人电话')
     num=models.CharField(max_length=50,default=100,verbose_name=u'奖券号码')
     createtime=models.DateTimeField(auto_now_add=True,verbose_name=u'中奖时间')
     awardname=models.CharField(max_length=50,verbose_name=u'奖项名称')
